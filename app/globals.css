@@ -90,6 +90,20 @@ html.dark .theme-switch:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.38);
 }
 
+.mobile-theme-switch {
+  border-color: rgba(124, 54, 70, 0.32) !important;
+  background: #fff5f7 !important;
+  color: #7c3646 !important;
+  box-shadow: 0 10px 24px rgba(75, 44, 47, 0.2) !important;
+}
+
+html.dark .mobile-theme-switch {
+  border-color: rgba(240, 204, 213, 0.4) !important;
+  background: #2a2124 !important;
+  color: #f4e8ea !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.42) !important;
+}
+
 html.dark .text-cocoa {
   color: #f4e8ea !important;
 }

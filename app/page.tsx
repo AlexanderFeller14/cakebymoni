@@ -36,11 +36,10 @@ export default function HomePage() {
     <>
       <section className="mx-auto grid w-full max-w-6xl gap-12 px-4 pb-20 pt-14 md:grid-cols-[1.1fr_0.9fr] md:items-center md:px-6 md:pt-24">
         <div className="animate-fadeUp relative">
-          <CupcakeOrnament className="pointer-events-none absolute -right-1 -top-3 hidden h-14 w-14 text-berry/45 md:block" />
-          <CupcakeOrnament className="pointer-events-none absolute -left-5 top-28 hidden h-10 w-10 rotate-[-14deg] opacity-85 md:block" />
+          <CupcakeOrnament className="pointer-events-none absolute -left-5 top-28 hidden h-10 w-10 rotate-[-14deg] md:block" />
           <div className="flex items-center gap-2">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-berry">Premium Hausbäckerei</p>
-            <CupcakeOrnament className="h-7 w-7 text-berry/50 md:hidden" />
+            <CupcakeOrnament className="h-7 w-7 md:hidden" />
           </div>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-cocoa md:text-6xl">
             Individuelle Torten & Cupcakes.
@@ -76,7 +75,7 @@ export default function HomePage() {
           <div className="signature-panel relative overflow-hidden rounded-[1.7rem] border border-white/50 bg-gradient-to-br from-[#f7dde3] via-[#ffece1] to-[#f7cad5] p-6 md:p-7">
             <div className="signature-glow absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/45 blur-2xl" />
             <div className="signature-glow absolute -bottom-14 -left-14 h-44 w-44 rounded-full bg-[#f2bfcf]/35 blur-2xl" />
-            <CupcakeOrnament className="pointer-events-none absolute bottom-4 right-4 h-12 w-12 text-berry/30" />
+            <CupcakeOrnament className="pointer-events-none absolute bottom-4 right-4 h-12 w-12" />
             <div className="relative">
               <p className="signature-badge inline-flex rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-berry">
                 Signature Service
@@ -101,7 +100,7 @@ export default function HomePage() {
 
       <section className="mx-auto w-full max-w-6xl px-4 pb-8 md:px-6">
         <div className="card-hover relative rounded-[2rem] border border-rose/50 bg-white p-6 md:p-8">
-          <CupcakeOrnament className="pointer-events-none absolute -right-3 -top-3 h-12 w-12 rotate-12 opacity-90 md:h-14 md:w-14" />
+          <CupcakeOrnament className="pointer-events-none absolute -right-3 -top-3 h-12 w-12 rotate-12 md:h-14 md:w-14" />
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-berry">So läuft es</p>
           <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             {process.map((step, index) => (

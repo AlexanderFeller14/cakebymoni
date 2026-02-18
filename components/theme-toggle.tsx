@@ -3,6 +3,9 @@
 import { useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
+type ThemeToggleProps = {
+  className?: string;
+};
 
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
@@ -10,7 +13,7 @@ function applyTheme(theme: Theme) {
   root.style.colorScheme = theme;
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({ className = '' }: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState<Theme>('light');
 
@@ -35,7 +38,7 @@ export function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       aria-label="Farbmodus wechseln"
-      className="theme-switch chip-hover inline-flex h-11 w-11 items-center justify-center rounded-full border font-semibold"
+      className={`theme-switch chip-hover inline-flex h-11 w-11 items-center justify-center rounded-full border font-semibold ${className}`}
     >
       <span className="sr-only">Farbmodus wechseln</span>
       <span aria-hidden="true" className="inline-flex items-center text-lg leading-none">

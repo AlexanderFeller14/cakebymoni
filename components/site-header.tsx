@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { navigation, primaryCta } from '@/lib/site';
@@ -10,11 +11,16 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-rose/40 bg-cream/95 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 md:px-6">
-        <Link href="/" className="group inline-flex items-center gap-2">
-          <span className="rounded-full bg-berry px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white transition group-hover:bg-cocoa">
-            Cake by Moni
-          </span>
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[1fr_auto] items-center px-4 py-4 md:flex md:justify-between md:px-6">
+        <Link href="/" className="group mx-auto inline-flex items-center gap-2 md:mx-0">
+          <Image
+            src="/gallery/cakebymoni-logo-1.png"
+            alt="Cake by Moni"
+            width={128}
+            height={128}
+            className="h-14 w-auto transition group-hover:opacity-90 md:h-16"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-5 md:flex">
@@ -32,11 +38,13 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
+        <div className="flex items-center justify-end gap-2">
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
           <Link
             href={primaryCta.href}
-            className="rounded-full bg-berry px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-cocoa"
+            className="hidden rounded-full bg-berry px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-cocoa md:inline-flex"
           >
             {primaryCta.label}
           </Link>

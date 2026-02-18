@@ -4,6 +4,7 @@ import './globals.css';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { LocalBusinessJsonLd } from '@/components/local-business-jsonld';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { siteConfig } from '@/lib/site';
 
 const playfair = Playfair_Display({ subsets: ['latin-ext'], variable: '--font-serif' });
@@ -12,7 +13,9 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ['latin-ext'], variable: '--font-sa
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
   icons: {
-    icon: '/favicon.svg'
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png'
   },
   title: {
     default: 'Cake by Moni | Custom Cakes & Cupcakes in der Schweiz',
@@ -67,6 +70,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <SiteHeader />
           <main>{children}</main>
           <SiteFooter />
+        </div>
+        <div className="fixed bottom-4 right-4 z-[70] md:hidden">
+          <ThemeToggle className="mobile-theme-switch" />
         </div>
       </body>
     </html>
