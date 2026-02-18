@@ -6,7 +6,8 @@ export function CtaBanner() {
       <div className="rounded-[2rem] bg-gradient-to-r from-berry via-[#9d4559] to-cocoa p-8 text-white shadow-soft md:p-10">
         <p className="text-xs font-semibold uppercase tracking-[0.23em] text-white/90">Dein Event beginnt hier</p>
         <h3 className="mt-3 max-w-2xl font-serif text-3xl leading-tight md:text-4xl">
-          Erzähl mir deine Idee und ich verwandle sie in eine Torte, die in Erinnerung bleibt.
+          Jede Torte und jedes Gebäck
+          <br className="hidden lg:block" /> ist einzigartig und auf deinen Wunsch abgestimmt.
         </h3>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link

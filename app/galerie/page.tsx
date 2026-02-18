@@ -13,27 +13,21 @@ export const metadata: Metadata = {
 };
 
 const galleryItems = [
-  { code: 'DU2W6QVDPzD', title: 'Elegant White Wedding Cake' },
-  { code: 'DT5zvHtDBWP', title: 'Boho Birthday Cake in Blush' },
-  { code: 'DT5ziccDBKV', title: 'Pastel Cupcake Collection' },
-  { code: 'DTkeKaRjDlO', title: 'Floral Anniversary Cake' },
-  { code: 'DThfpXPDBrc', title: 'Taufe Dessert Table' },
-  { code: 'DS0hlyzjPd0', title: 'Chocolate Berry Celebration Cake' },
-  { code: 'DSzjMo_jIjX', title: 'Minimal Chic Number Cake' },
-  { code: 'DSxo-U0jFY-', title: 'Pink Gold Sweet Table' },
-  { code: 'DSxo102jDhs', title: 'Unicorn Party Cupcakes' },
-  { code: 'DSxozY2DOaZ', title: 'Naked Cake mit frischen Beeren' },
-  { code: 'DSrY4eGDADU', title: 'Corporate Event Dessert Tray' },
-  { code: 'DSpMwfojK9K', title: 'Taufe Signature Cake' }
-];
-
-const fallbackGradients = [
-  'linear-gradient(135deg, #f6d7de 0%, #fce9d8 100%)',
-  'linear-gradient(135deg, #f8e5ec 0%, #f5dfd6 100%)',
-  'linear-gradient(135deg, #f3d8d0 0%, #fde6c9 100%)',
-  'linear-gradient(135deg, #f5dbe5 0%, #f9e8dd 100%)',
-  'linear-gradient(135deg, #f8e6d4 0%, #f2d7d9 100%)',
-  'linear-gradient(135deg, #f4dce8 0%, #fce7d6 100%)'
+  { src: '/gallery/IMG_2908.png', title: 'Eröffnungsapéro' },
+  { src: '/gallery/4AE50FB3-7D8B-45CD-A7D5-CB42EA6E30DF.JPG', title: 'Schoko-Brombeeren Cupcake' },
+  { src: '/gallery/FullSizeRender.png', title: 'Hochzeitstorte' },
+  { src: '/gallery/IMG_1151.png', title: 'Apéro Häppchen' },
+  { src: '/gallery/IMG_2839.png', title: 'Biene Maya Geburtstagstorte' },
+  { src: '/gallery/IMG_2262.JPG', title: 'Apéro-Tisch' },
+  { src: '/gallery/IMG_2462.JPG', title: 'Zweistöckige Geburtstagstorte' },
+  { src: '/gallery/004023e9-2207-40bd-87d0-80a3ef42e6c3.JPG', title: 'Omlettröllchen' },
+  { src: '/gallery/IMG_2555.png', title: 'Rote mini Cupcakes' },
+  { src: '/gallery/IMG_1882.png', title: 'Blaue Cupcakes' },
+  { src: '/gallery/0a0fab23-2630-469c-a8b0-2f553669ab5d.JPG', title: 'Geburtstagstorte' },
+  { src: '/gallery/IMG_5410.JPG', title: 'Schwein Geburtstagstorte' },
+  { src: '/gallery/IMG_6597.JPG', title: 'Dino Geburtstagstorte' },
+  { src: '/gallery/e8f7f92e-3d69-4647-b67a-4e33b9ad844d.JPG', title: 'Apéro Platte mit Käse und Fleisch' },
+  { src: '/gallery/FullSizeRender-3.png', title: 'Regenbogenfisch Geburtstagstorte' }
 ];
 
 export default function GaleriePage() {
@@ -48,20 +42,11 @@ export default function GaleriePage() {
       <div className="stagger mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
         {galleryItems.map((item, index) => (
           <article
-            key={item.code}
+            key={item.src}
             className="card-hover overflow-hidden rounded-[1.5rem] border border-rose/50 bg-white"
             style={{ animationDelay: `${(index % 6) * 80}ms` }}
           >
-            <a href={`https://www.instagram.com/p/${item.code}/`} target="_blank" rel="noreferrer">
-              <div
-                className="aspect-square w-full bg-cover bg-center"
-                role="img"
-                aria-label={item.title}
-                style={{
-                  backgroundImage: `url("https://www.instagram.com/p/${item.code}/media/?size=l"), ${fallbackGradients[index % fallbackGradients.length]}`
-                }}
-              />
-            </a>
+            <img src={item.src} alt={item.title} className="aspect-square w-full object-cover" loading="lazy" />
             <p className="px-3 py-3 text-xs font-medium text-cocoa/85 md:text-sm">{item.title}</p>
           </article>
         ))}
@@ -75,7 +60,7 @@ export default function GaleriePage() {
           rel="noreferrer"
           className="mt-4 inline-block rounded-full bg-berry px-6 py-3 text-sm font-semibold text-white transition hover:bg-cocoa"
         >
-          Zu @cakebymoni
+          @cakebymoni
         </Link>
       </div>
     </section>

@@ -225,6 +225,24 @@ html.dark .about-pill {
   background-color: #231d1f !important;
 }
 
+html.dark .angebote-shell {
+  background-color: #211b1d !important;
+}
+
+html.dark .angebote-hero {
+  background: linear-gradient(130deg, #3d2731 0%, #2b2226 52%, #472c37 100%) !important;
+}
+
+html.dark .angebote-item {
+  border-color: rgba(237, 195, 208, 0.24) !important;
+  background-color: rgba(83, 57, 64, 0.62) !important;
+}
+
+html.dark .angebote-note {
+  border-color: rgba(237, 195, 208, 0.24) !important;
+  background-color: #231d1f !important;
+}
+
 .stagger > * {
   animation: fadeUp 700ms ease-out both;
 }

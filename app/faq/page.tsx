@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: 'Wie früh soll ich bestellen?',
-    a: 'Am besten 2 bis 4 Wochen im Voraus. Für Hochzeiten und grössere Sweet Tables empfehle ich 6 bis 8 Wochen Vorlauf.'
+    a: 'Kurzfristige Anfragen sind je nach Kapazität ebenfalls möglich. Am besten 2 bis 4 Wochen im Voraus. Für Hochzeiten und grössere Events empfehle ich 6 bis 8 Wochen Vorlauf. Anfragen kann man immer :).'
   },
   {
     q: 'Kann ich Design und Geschmack frei wählen?',
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: 'Gibt es Mindestmengen für Cupcakes oder Catering?',
-    a: 'Cupcakes starten ab 12 Stück. Für Dessert Tables und Catering richtet sich die Menge nach Personenzahl und Eventkonzept.'
+    a: 'Cupcakes starten ab 6 Stück. Für Apéros und Catering richtet sich die Menge nach Personenzahl und Eventkonzept.'
   },
   {
     q: 'Sind Allergien oder spezielle Ernährungswünsche möglich?',

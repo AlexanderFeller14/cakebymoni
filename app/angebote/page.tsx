@@ -1,73 +1,75 @@
 import type { Metadata } from 'next';
 import { CtaBanner } from '@/components/cta-banner';
-import { SectionHeading } from '@/components/section-heading';
 
 export const metadata: Metadata = {
   title: 'Angebote',
   description:
-    'Individuelle Torten, Cupcakes, Sweet Tables und Party Catering in der Schweiz. Personalisiert für Geburtstage, Hochzeiten und Events.',
+    'Individuelle Torten, Cupcakes, Güetzi und weiteres Kleingebäck. Bei Cake by Moni bekommst du vielfältige Backwaren nach Wunsch für jeden Anlass.',
   alternates: {
     canonical: '/angebote'
   }
 };
 
-const services = [
+const offerBlocks = [
   {
-    title: 'Individuelle Torten',
-    text: 'Massgeschneiderte Torten für Geburtstag, Hochzeit oder Jubiläum - mit Wunschgeschmack, Farbschema und Designthema.'
+    title: 'Torten',
+    text: 'Individuelle Torten für Geburtstage, Hochzeiten und Jubiläen.',
+    details: ['Design nach Wunsch', 'Geschmack frei wählbar']
   },
   {
     title: 'Cupcakes',
-    text: 'Luftige Cupcakes mit harmonischen Toppings. Perfekt als Geschenk, für Candy Bars oder als Ergänzung zur Torte.'
+    text: 'Frisch gebackene Cupcakes als Ergänzung oder eigener Hingucker.',
+    details: ['Mehrere Sorten', 'Passend zum Anlass dekoriert']
   },
   {
-    title: 'Dessert & Sweet Tables',
-    text: 'Visuell abgestimmte Dessertlandschaften mit Cupcakes, Mini Desserts, Macarons und Signature Cake als Highlight.'
+    title: 'Güetzi & Gebäck',
+    text: 'Hausgemachte Güetzi, Cookies und Kleingebäck.',
+    details: ['Saisonal oder klassisch', 'Ideal für Apéros']
   },
   {
-    title: 'Party Catering (klein bis mittel)',
-    text: 'Komplette Dessertbegleitung für private und berufliche Events mit klarer Planung und zuverlässiger Umsetzung.'
+    title: 'Alles, was man backen kann',
+    text: 'Spezialwünsche setze ich gerne persönlich für dich um.',
+    details: ['Individuelle Beratung', 'Flexible Umsetzung']
   }
-];
-
-const process = [
-  'Anfrage mit Datum, Anlass und Personenanzahl senden',
-  'Designvorschlag und Geschmacksauswahl erhalten',
-  'Feinschliff und verbindliche Bestätigung',
-  'Abholung am Eventtag'
 ];
 
 export default function AngebotePage() {
   return (
     <>
-      <section className="mx-auto w-full max-w-6xl px-4 pb-12 pt-12 md:px-6 md:pt-16">
-        <SectionHeading
-          eyebrow="Leistungen"
-          title="Massgeschneiderte Desserts für unvergessliche Feste"
-          text="Jedes Angebot ist flexibel und wird exakt auf deinen Anlass abgestimmt. Du bekommst kein Standardprodukt, sondern ein individuelles Erlebnis."
-        />
+      <section className="mx-auto w-full max-w-6xl px-4 pb-10 pt-12 md:px-6 md:pt-16">
+        <div className="angebote-shell card-hover overflow-hidden rounded-[2rem] border border-rose/50 bg-white">
+          <div className="angebote-hero bg-gradient-to-r from-[#f8dce3] via-[#ffe9dc] to-[#f6d8e2] px-6 py-8 md:px-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-berry">Angebot</p>
+            <h1 className="mt-3 max-w-3xl font-serif leading-tight text-cocoa">
+              <span className="block text-3xl md:text-4xl">Torten, Cupcakes und Gebäck nach deinem Wunsch</span>
+              <span className="mt-1.5 block text-xl font-medium md:text-2xl">
+                Persönlich, frisch und mit viel Liebe gemacht.
+              </span>
+            </h1>
+          </div>
 
-        <div className="stagger mt-10 grid gap-5 md:grid-cols-2">
-          {services.map((service) => (
-            <article key={service.title} className="card-hover rounded-[1.75rem] border border-rose/50 bg-white p-6">
-              <h2 className="font-serif text-3xl text-cocoa">{service.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-cocoa/80">{service.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+          <div className="p-6 md:p-10">
+            <div className="grid gap-7 md:grid-cols-2">
+              {offerBlocks.map((block) => (
+                <div key={block.title} className="angebote-item rounded-[1.4rem] border border-rose/50 bg-rose/60 p-5">
+                  <h2 className="font-serif text-2xl text-cocoa">{block.title}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-cocoa/80">{block.text}</p>
+                  <ul className="mt-3 space-y-1.5 text-sm text-cocoa/85">
+                    {block.details.map((item) => (
+                      <li key={item}>• {item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
 
-      <section className="mx-auto w-full max-w-6xl px-4 pb-16 md:px-6">
-        <div className="card-hover rounded-[2rem] border border-rose/50 bg-white p-7 md:p-9">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-berry">So läuft es ab</p>
-          <ol className="mt-5 grid gap-3 md:grid-cols-2">
-            {process.map((step, index) => (
-              <li key={step} className="chip-hover rounded-2xl bg-rose/60 px-4 py-3 text-sm text-cocoa">
-                <span className="mr-2 font-semibold text-berry">{index + 1}.</span>
-                {step}
-              </li>
-            ))}
-          </ol>
+            <div className="angebote-note mt-7 rounded-[1.4rem] border border-rose/50 bg-white p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-berry">Hinweis</p>
+              <p className="mt-2 text-sm leading-relaxed text-cocoa/80">
+                Früh anfragen lohnt sich.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
