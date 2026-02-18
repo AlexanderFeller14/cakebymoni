@@ -6,8 +6,7 @@ export const siteConfig = {
   instagram: 'https://www.instagram.com/cakebymoni/?hl=de',
   serviceArea: 'Schweiz',
   phone: '079 772 59 88',
-  email: 'hello@cakebymoni.ch',
-  address: 'Musterstrasse 00, 0000 Musterort, Schweiz'
+  address: 'Reitigasse 6, 3422 Rüdtligen'
 };
 
 export const navigation = [

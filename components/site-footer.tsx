@@ -14,9 +14,9 @@ export function SiteFooter() {
 
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-berry">Kontakt</p>
-          <p className="mt-3 text-sm text-cocoa/80">{siteConfig.address}</p>
+          <p className="mt-3 text-sm text-cocoa/80">Monika Feller</p>
+          <p className="mt-2 text-sm text-cocoa/80">{siteConfig.address}</p>
           <p className="mt-2 text-sm text-cocoa/80">{siteConfig.phone}</p>
-          <p className="mt-2 text-sm text-cocoa/80">{siteConfig.email}</p>
         </div>
 
         <div>

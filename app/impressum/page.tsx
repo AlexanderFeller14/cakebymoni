@@ -16,17 +16,15 @@ export default function ImpressumPage() {
         <p>
           <strong>Cake by Moni</strong>
           <br />
-          [Adresse Platzhalter]
+          Reitigasse 6
           <br />
-          [PLZ Ort], Schweiz
+          3422 Rüdtligen, Schweiz
         </p>
         <p>
           Telefon: 079 772 59 88
-          <br />
-          E-Mail: [E-Mail Platzhalter]
         </p>
         <p>
-          Vertretungsberechtigte Person: Monika [Nachname Platzhalter]
+          Vertretungsberechtigte Person: Monika Feller
           <br />
           Rechtsform: Einzelunternehmen
         </p>

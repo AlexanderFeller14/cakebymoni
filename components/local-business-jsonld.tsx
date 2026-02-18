@@ -9,7 +9,6 @@ export function LocalBusinessJsonLd() {
     image: `${siteConfig.domain}/og-image.svg`,
     url: siteConfig.domain,
     telephone: siteConfig.phone,
-    email: siteConfig.email,
     address: {
       '@type': 'PostalAddress',
       streetAddress: siteConfig.address,

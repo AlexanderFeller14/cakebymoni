@@ -13,18 +13,27 @@ export const metadata: Metadata = {
 };
 
 const galleryItems = [
-  'Elegant White Wedding Cake',
-  'Boho Birthday Cake in Blush',
-  'Pastel Cupcake Collection',
-  'Floral Anniversary Cake',
-  'Taufe Dessert Table',
-  'Chocolate Berry Celebration Cake',
-  'Minimal Chic Number Cake',
-  'Pink Gold Sweet Table',
-  'Unicorn Party Cupcakes',
-  'Naked Cake mit frischen Beeren',
-  'Corporate Event Dessert Tray',
-  'Taufe Signature Cake'
+  { code: 'DU2W6QVDPzD', title: 'Elegant White Wedding Cake' },
+  { code: 'DT5zvHtDBWP', title: 'Boho Birthday Cake in Blush' },
+  { code: 'DT5ziccDBKV', title: 'Pastel Cupcake Collection' },
+  { code: 'DTkeKaRjDlO', title: 'Floral Anniversary Cake' },
+  { code: 'DThfpXPDBrc', title: 'Taufe Dessert Table' },
+  { code: 'DS0hlyzjPd0', title: 'Chocolate Berry Celebration Cake' },
+  { code: 'DSzjMo_jIjX', title: 'Minimal Chic Number Cake' },
+  { code: 'DSxo-U0jFY-', title: 'Pink Gold Sweet Table' },
+  { code: 'DSxo102jDhs', title: 'Unicorn Party Cupcakes' },
+  { code: 'DSxozY2DOaZ', title: 'Naked Cake mit frischen Beeren' },
+  { code: 'DSrY4eGDADU', title: 'Corporate Event Dessert Tray' },
+  { code: 'DSpMwfojK9K', title: 'Taufe Signature Cake' }
+];
+
+const fallbackGradients = [
+  'linear-gradient(135deg, #f6d7de 0%, #fce9d8 100%)',
+  'linear-gradient(135deg, #f8e5ec 0%, #f5dfd6 100%)',
+  'linear-gradient(135deg, #f3d8d0 0%, #fde6c9 100%)',
+  'linear-gradient(135deg, #f5dbe5 0%, #f9e8dd 100%)',
+  'linear-gradient(135deg, #f8e6d4 0%, #f2d7d9 100%)',
+  'linear-gradient(135deg, #f4dce8 0%, #fce7d6 100%)'
 ];
 
 export default function GaleriePage() {
@@ -39,20 +48,21 @@ export default function GaleriePage() {
       <div className="stagger mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
         {galleryItems.map((item, index) => (
           <article
-            key={item}
+            key={item.code}
             className="card-hover overflow-hidden rounded-[1.5rem] border border-rose/50 bg-white"
             style={{ animationDelay: `${(index % 6) * 80}ms` }}
           >
-            <div
-              className="aspect-square"
-              style={{
-                background:
-                  index % 2 === 0
-                    ? 'linear-gradient(140deg, #f4d4dc 0%, #ffe9dc 100%)'
-                    : 'linear-gradient(140deg, #ffe9dc 0%, #f8e3e8 100%)'
-              }}
-            />
-            <p className="px-3 py-3 text-xs font-medium text-cocoa/85 md:text-sm">{item}</p>
+            <a href={`https://www.instagram.com/p/${item.code}/`} target="_blank" rel="noreferrer">
+              <div
+                className="aspect-square w-full bg-cover bg-center"
+                role="img"
+                aria-label={item.title}
+                style={{
+                  backgroundImage: `url("https://www.instagram.com/p/${item.code}/media/?size=l"), ${fallbackGradients[index % fallbackGradients.length]}`
+                }}
+              />
+            </a>
+            <p className="px-3 py-3 text-xs font-medium text-cocoa/85 md:text-sm">{item.title}</p>
           </article>
         ))}
       </div>

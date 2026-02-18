@@ -55,8 +55,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="de" className={`${playfair.variable} ${jakarta.variable}`}>
+    <html lang="de" className={`${playfair.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <body className="page-shell font-sans text-cocoa antialiased">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var t=(s==='dark'||s==='light')?s:(d?'dark':'light');var r=document.documentElement;r.classList.toggle('dark',t==='dark');r.style.colorScheme=t;}catch(e){}})();`
+          }}
+        />
         <LocalBusinessJsonLd />
         <div className="min-h-screen">
           <SiteHeader />

@@ -6,6 +6,10 @@
   color-scheme: light;
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -17,6 +21,13 @@ body {
     radial-gradient(circle at 15% 12%, rgba(244, 212, 220, 0.55), transparent 40%),
     radial-gradient(circle at 84% 2%, rgba(255, 215, 185, 0.45), transparent 34%),
     #fffaf4;
+}
+
+html.dark body {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(142, 82, 101, 0.26), transparent 42%),
+    radial-gradient(circle at 82% 4%, rgba(180, 128, 96, 0.2), transparent 36%),
+    #171315;
 }
 
 .page-shell {
@@ -35,6 +46,15 @@ body {
   border-color: rgba(124, 54, 70, 0.18);
 }
 
+html.dark .card-hover {
+  border-color: rgba(240, 204, 213, 0.14);
+}
+
+html.dark .card-hover:hover {
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
+  border-color: rgba(240, 204, 213, 0.24);
+}
+
 .chip-hover {
   transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), background-color 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1), border-color 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -42,6 +62,167 @@ body {
 .chip-hover:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 18px rgba(75, 44, 47, 0.08);
+}
+
+.theme-switch {
+  border-color: rgba(124, 54, 70, 0.2);
+  background: rgba(255, 255, 255, 0.86);
+  color: #7c3646;
+  box-shadow: 0 8px 18px rgba(75, 44, 47, 0.1);
+}
+
+.theme-switch:hover {
+  border-color: rgba(124, 54, 70, 0.34);
+  background: #ffffff;
+  box-shadow: 0 10px 22px rgba(75, 44, 47, 0.14);
+}
+
+html.dark .theme-switch {
+  border-color: rgba(240, 204, 213, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(248, 233, 237, 0.95);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.32);
+}
+
+html.dark .theme-switch:hover {
+  border-color: rgba(240, 204, 213, 0.55);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.38);
+}
+
+html.dark .text-cocoa {
+  color: #f4e8ea !important;
+}
+
+html.dark .text-cocoa\/90 {
+  color: rgba(244, 232, 234, 0.9) !important;
+}
+
+html.dark .text-cocoa\/85 {
+  color: rgba(244, 232, 234, 0.85) !important;
+}
+
+html.dark .text-cocoa\/80 {
+  color: rgba(244, 232, 234, 0.8) !important;
+}
+
+html.dark .text-cocoa\/70 {
+  color: rgba(244, 232, 234, 0.7) !important;
+}
+
+html.dark .text-berry {
+  color: #f2b7c6 !important;
+}
+
+html.dark .bg-white {
+  background-color: #231d1f !important;
+}
+
+html.dark .bg-white\/85 {
+  background-color: rgba(35, 29, 31, 0.85) !important;
+}
+
+html.dark .bg-white\/70 {
+  background-color: rgba(35, 29, 31, 0.7) !important;
+}
+
+html.dark .bg-white\/45 {
+  background-color: rgba(35, 29, 31, 0.45) !important;
+}
+
+html.dark .bg-cream\/95 {
+  background-color: rgba(24, 19, 20, 0.95) !important;
+}
+
+html.dark .bg-rose {
+  background-color: #35282d !important;
+}
+
+html.dark .bg-rose\/60 {
+  background-color: rgba(83, 57, 64, 0.6) !important;
+}
+
+html.dark .bg-rose\/70 {
+  background-color: rgba(83, 57, 64, 0.7) !important;
+}
+
+html.dark .bg-\[\#fff4eb\] {
+  background-color: #1c1719 !important;
+}
+
+html.dark .border-rose\/80 {
+  border-color: rgba(237, 195, 208, 0.33) !important;
+}
+
+html.dark .border-rose\/50 {
+  border-color: rgba(237, 195, 208, 0.22) !important;
+}
+
+html.dark .border-rose\/40 {
+  border-color: rgba(237, 195, 208, 0.18) !important;
+}
+
+html.dark .border-cocoa\/15 {
+  border-color: rgba(244, 232, 234, 0.16) !important;
+}
+
+html.dark .signature-shell {
+  background-color: #211b1d !important;
+}
+
+html.dark .signature-panel {
+  border-color: rgba(237, 195, 208, 0.2) !important;
+  background: linear-gradient(140deg, #3a2730 0%, #2d2428 52%, #452a34 100%) !important;
+}
+
+html.dark .signature-glow {
+  background-color: rgba(248, 227, 232, 0.12) !important;
+}
+
+html.dark .signature-badge {
+  background-color: rgba(24, 20, 22, 0.65) !important;
+  color: #f2b7c6 !important;
+}
+
+html.dark .signature-chip {
+  background-color: rgba(24, 20, 22, 0.65) !important;
+  color: rgba(246, 233, 236, 0.95) !important;
+}
+
+html.dark .about-signature {
+  background: linear-gradient(140deg, #3a2730 0%, #2d2428 52%, #452a34 100%) !important;
+  border: 1px solid rgba(237, 195, 208, 0.2) !important;
+}
+
+html.dark .about-signature-label {
+  color: #f2b7c6 !important;
+}
+
+html.dark .about-story {
+  background-color: #231d1f !important;
+}
+
+html.dark .about-kicker {
+  color: #f2b7c6 !important;
+}
+
+html.dark .about-quote {
+  border-color: rgba(237, 195, 208, 0.3) !important;
+  background-color: rgba(83, 57, 64, 0.5) !important;
+  color: rgba(244, 232, 234, 0.9) !important;
+}
+
+html.dark .about-list-item {
+  color: rgba(244, 232, 234, 0.92) !important;
+}
+
+html.dark .about-list-item::marker {
+  color: #f2b7c6;
+}
+
+html.dark .about-pill {
+  border-color: rgba(237, 195, 208, 0.3) !important;
+  background-color: #231d1f !important;
 }
 
 .stagger > * {

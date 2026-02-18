@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const trustBadges = ['Handgemacht', 'Individuell', 'Lokal in der Schweiz'];
-const process = ['Anfrage senden', 'Termin vereinbaren', 'Design abstimmen', 'Abholung (Lieferung nach Vereinbarung)'];
+const process = ['Anfrage senden', 'Termin vereinbaren', 'Design abstimmen', 'Abholung'];
 const offers = [
   {
     title: 'Individuelle Torten',
@@ -37,7 +37,7 @@ export default function HomePage() {
         <div className="animate-fadeUp">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-berry">Premium Homemade Bakery</p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-cocoa md:text-6xl">
-            Custom Cakes & Cupcakes für besondere Momente.
+            Individuelle Torten & Cupcakes.
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-cocoa/80 md:text-lg">
             Cake by Moni kreiert emotionale Torten, feine Cupcakes und stilvolle Sweet Tables für Geburtstage,
@@ -67,12 +67,12 @@ export default function HomePage() {
           <p className="mt-5 text-sm text-cocoa/70">{siteConfig.serviceArea}</p>
         </div>
 
-        <div className="card-hover animate-fadeUp rounded-[2rem] border border-rose/40 bg-white p-4 shadow-soft md:p-5">
-          <div className="relative overflow-hidden rounded-[1.7rem] border border-white/50 bg-gradient-to-br from-[#f7dde3] via-[#ffece1] to-[#f7cad5] p-7">
-            <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/45 blur-2xl" />
-            <div className="absolute -bottom-14 -left-14 h-44 w-44 rounded-full bg-[#f2bfcf]/35 blur-2xl" />
+        <div className="signature-shell card-hover animate-fadeUp rounded-[2rem] border border-rose/40 bg-white p-4 shadow-soft md:p-5">
+          <div className="signature-panel relative overflow-hidden rounded-[1.7rem] border border-white/50 bg-gradient-to-br from-[#f7dde3] via-[#ffece1] to-[#f7cad5] p-7">
+            <div className="signature-glow absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/45 blur-2xl" />
+            <div className="signature-glow absolute -bottom-14 -left-14 h-44 w-44 rounded-full bg-[#f2bfcf]/35 blur-2xl" />
             <div className="relative">
-              <p className="inline-flex rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-berry">
+              <p className="signature-badge inline-flex rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-berry">
                 Signature Service
               </p>
               <h2 className="mt-4 max-w-sm font-serif text-3xl leading-tight text-cocoa md:text-4xl">
@@ -83,16 +83,16 @@ export default function HomePage() {
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2 text-xs font-semibold text-cocoa/85">
-                <span className="chip-hover rounded-full bg-white/85 px-3 py-1.5">Design nach Wunsch</span>
-                <span className="chip-hover rounded-full bg-white/85 px-3 py-1.5">Frisch gebacken</span>
-                <span className="chip-hover rounded-full bg-white/85 px-3 py-1.5">Abholung bevorzugt</span>
+                <span className="signature-chip chip-hover rounded-full bg-white/85 px-3 py-1.5">Design nach Wunsch</span>
+                <span className="signature-chip chip-hover rounded-full bg-white/85 px-3 py-1.5">Frisch gebacken</span>
+                <span className="signature-chip chip-hover rounded-full bg-white/85 px-3 py-1.5">Abholung bevorzugt</span>
               </div>
 
               <Link
                 href="/angebote"
                 className="mt-6 inline-block rounded-full bg-berry px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-cocoa"
               >
-                Leistungen ansehen
+                Angebot ansehen
               </Link>
             </div>
           </div>

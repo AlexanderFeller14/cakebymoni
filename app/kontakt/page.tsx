@@ -30,9 +30,6 @@ export default function KontaktPage() {
             <strong>Telefon:</strong> {siteConfig.phone}
           </p>
           <p>
-            <strong>E-Mail:</strong> {siteConfig.email}
-          </p>
-          <p>
             <strong>Instagram:</strong> @cakebymoni
           </p>
         </div>

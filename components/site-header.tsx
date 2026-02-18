@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { navigation, primaryCta } from '@/lib/site';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -31,12 +32,15 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <Link
-          href={primaryCta.href}
-          className="rounded-full bg-berry px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-cocoa"
-        >
-          {primaryCta.label}
-        </Link>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Link
+            href={primaryCta.href}
+            className="rounded-full bg-berry px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-cocoa"
+          >
+            {primaryCta.label}
+          </Link>
+        </div>
       </div>
       <div className="mx-auto flex w-full max-w-6xl gap-2 overflow-x-auto px-4 pb-4 md:hidden">
         {navigation.map((item) => {
