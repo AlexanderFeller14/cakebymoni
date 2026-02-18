@@ -10,6 +10,32 @@ type ContactPayload = {
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+function mapSmtpError(error: unknown): string {
+  const e = error as { code?: string; responseCode?: number; message?: string };
+
+  if (e?.code === 'EAUTH') {
+    return 'SMTP Anmeldung fehlgeschlagen. Prüfe SMTP_USER/SMTP_PASS (bei Hotmail oft App-Passwort nötig).';
+  }
+
+  if (e?.code === 'ECONNECTION' || e?.code === 'ETIMEDOUT') {
+    return 'SMTP Verbindung fehlgeschlagen. Prüfe SMTP_HOST/SMTP_PORT.';
+  }
+
+  if (e?.code === 'EENVELOPE') {
+    return 'Absender/Empfänger wurde vom Mailserver abgelehnt. Prüfe SMTP_USER und CONTACT_TO_EMAIL.';
+  }
+
+  if (e?.responseCode === 535) {
+    return 'Authentifizierung abgelehnt (535). Prüfe Passwort oder App-Passwort.';
+  }
+
+  if (e?.responseCode === 550) {
+    return 'Empfänger wurde vom Mailserver abgelehnt (550). Prüfe CONTACT_TO_EMAIL.';
+  }
+
+  return 'Beim Senden ist ein Fehler aufgetreten.';
+}
+
 function validate(payload: ContactPayload) {
   const errors: string[] = [];
 
@@ -46,11 +72,14 @@ export async function POST(request: Request) {
       host: process.env.SMTP_HOST ?? 'smtp.office365.com',
       port: Number(process.env.SMTP_PORT ?? 587),
       secure: false,
+      requireTLS: true,
       auth: {
         user: smtpUser,
         pass: smtpPass
       }
     });
+
+    await transporter.verify();
 
     const subject = `Neue Anfrage von ${payload.name}`;
     const text = [
@@ -83,7 +112,8 @@ export async function POST(request: Request) {
     });
 
     return Response.json({ ok: true });
-  } catch {
-    return Response.json({ ok: false, error: 'Beim Senden ist ein Fehler aufgetreten.' }, { status: 500 });
+  } catch (error) {
+    console.error('Contact form mail error:', error);
+    return Response.json({ ok: false, error: mapSmtpError(error) }, { status: 500 });
   }
 }
