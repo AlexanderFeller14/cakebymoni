@@ -1,5 +1,3 @@
-import nodemailer from 'nodemailer';
-
 type ContactPayload = {
   name?: string;
   email?: string;
@@ -9,32 +7,6 @@ type ContactPayload = {
 };
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function mapSmtpError(error: unknown): string {
-  const e = error as { code?: string; responseCode?: number; message?: string };
-
-  if (e?.code === 'EAUTH') {
-    return 'SMTP Anmeldung fehlgeschlagen. Prüfe SMTP_USER/SMTP_PASS (Brevo Login + SMTP Key).';
-  }
-
-  if (e?.code === 'ECONNECTION' || e?.code === 'ETIMEDOUT') {
-    return 'SMTP Verbindung fehlgeschlagen. Prüfe SMTP_HOST/SMTP_PORT.';
-  }
-
-  if (e?.code === 'EENVELOPE') {
-    return 'Absender/Empfänger wurde vom Mailserver abgelehnt. Prüfe SMTP_USER und CONTACT_TO_EMAIL.';
-  }
-
-  if (e?.responseCode === 535) {
-    return 'Authentifizierung abgelehnt (535). Prüfe Brevo SMTP Key.';
-  }
-
-  if (e?.responseCode === 550) {
-    return 'Empfänger wurde vom Mailserver abgelehnt (550). Prüfe CONTACT_TO_EMAIL.';
-  }
-
-  return 'Beim Senden ist ein Fehler aufgetreten.';
-}
 
 function validate(payload: ContactPayload) {
   const errors: string[] = [];
@@ -48,6 +20,19 @@ function validate(payload: ContactPayload) {
   return errors;
 }
 
+function mapBrevoError(status: number): string {
+  if (status === 401 || status === 403) {
+    return 'Brevo API-Key ungültig oder ohne Berechtigung.';
+  }
+  if (status === 400) {
+    return 'Brevo hat die Anfrage abgelehnt. Prüfe Absender-Adresse und Empfänger.';
+  }
+  if (status >= 500) {
+    return 'Brevo ist aktuell nicht erreichbar. Bitte später erneut versuchen.';
+  }
+  return 'Beim Senden ist ein Fehler aufgetreten.';
+}
+
 export async function POST(request: Request) {
   try {
     const payload = (await request.json()) as ContactPayload;
@@ -57,29 +42,16 @@ export async function POST(request: Request) {
       return Response.json({ ok: false, error: 'Ungültige Eingaben.', fields: errors }, { status: 400 });
     }
 
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
-    const contactTo = process.env.CONTACT_TO_EMAIL ?? smtpUser;
+    const brevoApiKey = process.env.BREVO_API_KEY;
+    const contactTo = process.env.CONTACT_TO_EMAIL;
+    const senderEmail = process.env.BREVO_SENDER_EMAIL;
 
-    if (!smtpUser || !smtpPass || !contactTo) {
+    if (!brevoApiKey || !contactTo || !senderEmail) {
       return Response.json(
-        { ok: false, error: 'E-Mail-Konfiguration fehlt. Bitte SMTP_USER, SMTP_PASS und CONTACT_TO_EMAIL setzen.' },
+        { ok: false, error: 'E-Mail-Konfiguration fehlt. Bitte BREVO_API_KEY, BREVO_SENDER_EMAIL und CONTACT_TO_EMAIL setzen.' },
         { status: 500 }
       );
     }
-
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST ?? 'smtp-relay.brevo.com',
-      port: Number(process.env.SMTP_PORT ?? 587),
-      secure: false,
-      requireTLS: true,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass
-      }
-    });
-
-    await transporter.verify();
 
     const subject = `Neue Anfrage von ${payload.name}`;
     const text = [
@@ -102,18 +74,31 @@ export async function POST(request: Request) {
       <p>${payload.message?.replace(/\n/g, '<br />')}</p>
     `;
 
-    await transporter.sendMail({
-      from: `"Cake by Moni Website" <${smtpUser}>`,
-      to: contactTo,
-      replyTo: payload.email,
-      subject,
-      text,
-      html
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'api-key': brevoApiKey,
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        sender: { email: senderEmail, name: 'Cake by Moni Website' },
+        to: [{ email: contactTo }],
+        replyTo: { email: payload.email, name: payload.name },
+        subject,
+        textContent: text,
+        htmlContent: html
+      })
     });
+
+    if (!response.ok) {
+      const detail = await response.text().catch(() => '');
+      console.error('Brevo API error:', response.status, detail);
+      return Response.json({ ok: false, error: mapBrevoError(response.status) }, { status: 500 });
+    }
 
     return Response.json({ ok: true });
   } catch (error) {
     console.error('Contact form mail error:', error);
-    return Response.json({ ok: false, error: mapSmtpError(error) }, { status: 500 });
+    return Response.json({ ok: false, error: 'Beim Senden ist ein Fehler aufgetreten.' }, { status: 500 });
   }
 }
