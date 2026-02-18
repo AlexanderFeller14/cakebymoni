@@ -15,10 +15,6 @@ export default function ImpressumPage() {
       <div className="card-hover mt-6 space-y-4 rounded-[1.5rem] border border-rose/50 bg-white p-6 text-sm leading-relaxed text-cocoa/85">
         <p>
           <strong>Cake by Moni</strong>
-          <br />
-          Reitigasse 6
-          <br />
-          3422 Rüdtligen, Schweiz
         </p>
         <p>
           Telefon: 079 772 59 88

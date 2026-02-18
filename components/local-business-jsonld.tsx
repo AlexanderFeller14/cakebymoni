@@ -9,11 +9,6 @@ export function LocalBusinessJsonLd() {
     image: `${siteConfig.domain}/og-image.svg`,
     url: siteConfig.domain,
     telephone: siteConfig.phone,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: siteConfig.address,
-      addressCountry: 'CH'
-    },
     areaServed: siteConfig.serviceArea,
     sameAs: [siteConfig.instagram],
     servesCuisine: ['Dessert', 'Cakes', 'Cupcakes'],

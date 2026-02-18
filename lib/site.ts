@@ -5,8 +5,7 @@ export const siteConfig = {
   domain: 'https://cakebymoni.vercel.app',
   instagram: 'https://www.instagram.com/cakebymoni/?hl=de',
   serviceArea: 'Schweiz',
-  phone: '079 772 59 88',
-  address: 'Reitigasse 6, 3422 Rüdtligen'
+  phone: '079 772 59 88'
 };
 
 export const navigation = [
