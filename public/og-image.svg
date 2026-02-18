@@ -1,0 +1,13 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4D4DC"/>
+      <stop offset="1" stop-color="#FFE9DC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="24" fill="url(#bg)"/>
+  <rect x="70" y="70" width="1060" height="490" rx="36" fill="#FFF8F1"/>
+  <text x="120" y="260" fill="#4B2C2F" font-size="74" font-family="Georgia, serif">Cake by Moni</text>
+  <text x="120" y="335" fill="#7C3646" font-size="38" font-family="Arial, sans-serif">Custom Cakes &amp; Cupcakes fuer besondere Momente</text>
+  <text x="120" y="400" fill="#4B2C2F" font-size="30" font-family="Arial, sans-serif">Schweiz | Hochzeit | Geburtstag | Babyshower | Events</text>
+</svg>
