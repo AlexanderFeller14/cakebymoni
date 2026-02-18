@@ -14,7 +14,7 @@ function mapSmtpError(error: unknown): string {
   const e = error as { code?: string; responseCode?: number; message?: string };
 
   if (e?.code === 'EAUTH') {
-    return 'SMTP Anmeldung fehlgeschlagen. Prüfe SMTP_USER/SMTP_PASS (bei Hotmail oft App-Passwort nötig).';
+    return 'SMTP Anmeldung fehlgeschlagen. Prüfe SMTP_USER/SMTP_PASS (Brevo Login + SMTP Key).';
   }
 
   if (e?.code === 'ECONNECTION' || e?.code === 'ETIMEDOUT') {
@@ -26,7 +26,7 @@ function mapSmtpError(error: unknown): string {
   }
 
   if (e?.responseCode === 535) {
-    return 'Authentifizierung abgelehnt (535). Prüfe Passwort oder App-Passwort.';
+    return 'Authentifizierung abgelehnt (535). Prüfe Brevo SMTP Key.';
   }
 
   if (e?.responseCode === 550) {
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
     }
 
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST ?? 'smtp.office365.com',
+      host: process.env.SMTP_HOST ?? 'smtp-relay.brevo.com',
       port: Number(process.env.SMTP_PORT ?? 587),
       secure: false,
       requireTLS: true,
