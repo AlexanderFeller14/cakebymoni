@@ -25,6 +25,7 @@ export function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const minDate = useMemo(() => {
     const d = new Date();
@@ -59,17 +60,35 @@ export function ContactForm() {
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
       setIsSubmitted(false);
+      setSubmitError(null);
       return;
     }
 
     setErrors({});
     setIsSending(true);
+    setSubmitError(null);
 
-    await new Promise((resolve) => setTimeout(resolve, 900));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values)
+      });
 
-    setIsSending(false);
-    setIsSubmitted(true);
-    setValues(initialValues);
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(data?.error ?? 'Senden fehlgeschlagen.');
+      }
+
+      setIsSubmitted(true);
+      setValues(initialValues);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Senden fehlgeschlagen.';
+      setSubmitError(message);
+      setIsSubmitted(false);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const baseInput =
@@ -169,6 +188,10 @@ export function ContactForm() {
         <p className="chip-hover mt-4 rounded-2xl bg-rose px-4 py-3 text-sm text-cocoa">
           Danke! Deine Anfrage ist eingegangen. Ich melde mich schnellstmöglich mit einem Vorschlag bei dir.
         </p>
+      ) : null}
+
+      {submitError ? (
+        <p className="mt-4 rounded-2xl border border-berry/25 bg-white px-4 py-3 text-sm text-berry">{submitError}</p>
       ) : null}
     </form>
   );
