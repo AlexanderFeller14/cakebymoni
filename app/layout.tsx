@@ -13,8 +13,11 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ['latin-ext'], variable: '--font-sa
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.png', type: 'image/png' }
+    ],
+    shortcut: '/favicon.ico',
     apple: '/favicon.png'
   },
   title: {
